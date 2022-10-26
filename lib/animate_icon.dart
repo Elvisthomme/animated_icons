@@ -29,19 +29,23 @@ class AnimateIcon extends StatefulWidget {
   /// [onHover] is callback which is send by user depend on requirement
   final Function? onHover;
 
+  /// [duration] the animation duration depend on requirement
+  final Duration? duration;
+
   /// [toolTip] is for showing messeage when longpress on respected icon
   final String? toolTip;
-  const AnimateIcon(
-      {Key? key,
-      required this.onTap,
-      required this.iconType,
-      required this.animateIcon,
-      this.height = 50,
-      this.width = 50,
-      this.color = Colors.black,
-      this.onHover,
-      this.toolTip})
-      : super(key: key);
+  const AnimateIcon({
+    Key? key,
+    required this.onTap,
+    required this.iconType,
+    required this.animateIcon,
+    this.height = 50,
+    this.width = 50,
+    this.color = Colors.black,
+    this.onHover,
+    this.toolTip,
+    this.duration,
+  }) : super(key: key);
 
   @override
   _AnimateIconState createState() => _AnimateIconState();
@@ -55,7 +59,7 @@ class _AnimateIconState extends State<AnimateIcon>
   void initState() {
     super.initState();
 
-    _animationController = AnimationController(vsync: this);
+    _animationController = AnimationController(vsync: this, duration: widget.duration);
   }
 
   @override
